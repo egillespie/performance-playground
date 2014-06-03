@@ -1,12 +1,11 @@
-package playground.serialization;
+package playground.conversion;
 
 import com.google.common.collect.ImmutableSet;
 import org.joda.time.LocalDate;
 
-import java.util.Date;
 import java.util.Random;
 
-import static playground.serialization.TestObject.NestedObject;
+import static playground.conversion.TestObject.NestedObject;
 
 /**
  * Creates new instances of {@link TestObject} pre-loaded with random data.
@@ -26,7 +25,6 @@ public final class TestObjectFactory {
                 RANDOM.nextLong(),
                 nextRandomString(),
                 nextRandomStringArray(),
-                nextRandomDate(),
                 nextRandomLocalDate(),
                 newNestedObject(),
                 nextRandomNestedObjectSet());
@@ -57,10 +55,6 @@ public final class TestObjectFactory {
             stringArray[i] = nextRandomString();
         }
         return stringArray;
-    }
-
-    private static Date nextRandomDate() {
-        return new Date(RANDOM.nextLong());
     }
 
     private static LocalDate nextRandomLocalDate() {

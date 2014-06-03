@@ -1,16 +1,17 @@
-package playground.serialization;
+package playground.conversion;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
 import org.joda.time.LocalDate;
 
 import java.util.Arrays;
-import java.util.Date;
 
 /**
  * Stores a lot of different data types in various structures to make sure a broad spectrum of capabilities for each
- * serialization and deserialization library is being utilized in benchmarks.
+ * data conversion library is being utilized in benchmarks.
  *
  * @author egillespie
  */
@@ -21,19 +22,26 @@ public class TestObject {
     private final long myLong;
     private final String myString;
     private final String[] myStringArray;
-    private final Date myDate;
     private final LocalDate myLocalDate;
     private final NestedObject myNestedObject;
     private final ImmutableSet<NestedObject> myNestedObjectSet;
 
-    public TestObject(boolean myBoolean, int myInt, double myDouble, long myLong, String myString, String[] myStringArray, Date myDate, LocalDate myLocalDate, NestedObject myNestedObject, ImmutableSet<NestedObject> myNestedObjectSet) {
+    @JsonCreator
+    public TestObject(@JsonProperty("myBoolean") boolean myBoolean,
+                      @JsonProperty("myInt") int myInt,
+                      @JsonProperty("myDouble") double myDouble,
+                      @JsonProperty("myLong") long myLong,
+                      @JsonProperty("myString") String myString,
+                      @JsonProperty("myStringArray") String[] myStringArray,
+                      @JsonProperty("myLocalDate") LocalDate myLocalDate,
+                      @JsonProperty("myNestedObject") NestedObject myNestedObject,
+                      @JsonProperty("myNestedObjectSet") ImmutableSet<NestedObject> myNestedObjectSet) {
         this.myBoolean = myBoolean;
         this.myInt = myInt;
         this.myDouble = myDouble;
         this.myLong = myLong;
         this.myString = myString;
         this.myStringArray = myStringArray;
-        this.myDate = myDate;
         this.myLocalDate = myLocalDate;
         this.myNestedObject = myNestedObject;
         this.myNestedObjectSet = myNestedObjectSet;
@@ -63,10 +71,6 @@ public class TestObject {
         return myStringArray;
     }
 
-    public Date getMyDate() {
-        return myDate;
-    }
-
     public LocalDate getMyLocalDate() {
         return myLocalDate;
     }
@@ -90,7 +94,6 @@ public class TestObject {
         if (Double.compare(that.myDouble, myDouble) != 0) return false;
         if (myInt != that.myInt) return false;
         if (myLong != that.myLong) return false;
-        if (myDate != null ? !myDate.equals(that.myDate) : that.myDate != null) return false;
         if (myLocalDate != null ? !myLocalDate.equals(that.myLocalDate) : that.myLocalDate != null) return false;
         if (myNestedObject != null ? !myNestedObject.equals(that.myNestedObject) : that.myNestedObject != null)
             return false;
@@ -113,7 +116,6 @@ public class TestObject {
         result = 31 * result + (int) (myLong ^ (myLong >>> 32));
         result = 31 * result + (myString != null ? myString.hashCode() : 0);
         result = 31 * result + (myStringArray != null ? Arrays.hashCode(myStringArray) : 0);
-        result = 31 * result + (myDate != null ? myDate.hashCode() : 0);
         result = 31 * result + (myLocalDate != null ? myLocalDate.hashCode() : 0);
         result = 31 * result + (myNestedObject != null ? myNestedObject.hashCode() : 0);
         result = 31 * result + (myNestedObjectSet != null ? myNestedObjectSet.hashCode() : 0);
@@ -129,7 +131,6 @@ public class TestObject {
                 .add("myLong", myLong)
                 .add("myString", myString)
                 .add("myStringArray", String.format("[%s]", Joiner.on(',').join(myStringArray)))
-                .add("myDate", myDate)
                 .add("myLocalDate", myLocalDate)
                 .add("myNestedObject", myNestedObject)
                 .add("myNestedObjectSet", myNestedObjectSet)
@@ -148,7 +149,17 @@ public class TestObject {
         private final LocalDate date8;
         private final LocalDate date9;
 
-        public NestedObject(LocalDate date0, LocalDate date1, LocalDate date2, LocalDate date3, LocalDate date4, LocalDate date5, LocalDate date6, LocalDate date7, LocalDate date8, LocalDate date9) {
+        @JsonCreator
+        public NestedObject(@JsonProperty("date0") LocalDate date0,
+                            @JsonProperty("date1") LocalDate date1,
+                            @JsonProperty("date2") LocalDate date2,
+                            @JsonProperty("date3") LocalDate date3,
+                            @JsonProperty("date4") LocalDate date4,
+                            @JsonProperty("date5") LocalDate date5,
+                            @JsonProperty("date6") LocalDate date6,
+                            @JsonProperty("date7") LocalDate date7,
+                            @JsonProperty("date8") LocalDate date8,
+                            @JsonProperty("date9") LocalDate date9) {
             this.date0 = date0;
             this.date1 = date1;
             this.date2 = date2;
