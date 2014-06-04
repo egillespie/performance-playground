@@ -12,8 +12,8 @@ import com.fasterxml.jackson.datatype.joda.JodaModule;
  *
  * @author egillespie
  */
-public class BenchmarkedObjectMapper extends ObjectMapper {
-    public BenchmarkedObjectMapper() {
+public class StandardObjectMapper extends ObjectMapper {
+    public StandardObjectMapper() {
         registerModule(new GuavaModule());
         registerModule(new JodaModule());
         disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
