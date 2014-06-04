@@ -1,0 +1,30 @@
+package playground.conversion;
+
+option java_package = "playground.conversion";
+option java_outer_classname = "TestObjectProtos";
+
+message TestObjectProto {
+    required bool myBoolean = 1;
+    required int32 myInt = 2;
+    required double myDouble = 3;
+    required int64 myLong = 4;
+    required string myString = 5;
+    repeated string myStringArray = 6;
+    required string myLocalDate = 7;
+
+    message NestedObjectProto {
+        required string date0 = 1;
+        required string date1 = 2;
+        required string date2 = 3;
+        required string date3 = 4;
+        required string date4 = 5;
+        required string date5 = 6;
+        required string date6 = 7;
+        required string date7 = 8;
+        required string date8 = 9;
+        required string date9 = 10;
+    }
+
+    required NestedObjectProto myNestedObject = 8;
+    repeated NestedObjectProto myNestedObjectSet = 9;
+}
