@@ -20,7 +20,7 @@ import static playground.conversion.TestObjectProtos.TestObjectProto;
  * @author egillespie
  */
 @RunWith(JUnit4.class)
-@FixMethodOrder(MethodSorters.JVM)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DataConversionBenchmarkTest {
     private static final BenchmarkRunner RUNNER = new BenchmarkRunner(100);
 
@@ -35,7 +35,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void testJacksonSerializationWorks() throws Exception {
+    public void b001_testJacksonSerializationWorks() throws Exception {
         StandardObjectMapper objectMapper = new StandardObjectMapper();
         TestObject original = TestObjectFactory.newTestObject();
         TestObject recomposed = objectMapper.readValue(objectMapper.writeValueAsString(original), TestObject.class);
@@ -43,7 +43,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void benchmarkJacksonDataSizes() throws Exception {
+    public void b002_benchmarkJacksonDataSizes() throws Exception {
         byte[] bytes = new StandardObjectMapper().writeValueAsBytes(TestObjectFactory.newTestObject());
         byte[] compressedBytes = gzipCompress(bytes);
         System.out.println(String.format("Jackson Serialization Data Sizes: [ uncompressed bytes = %d, gzip compressed bytes = %d, compression ratio = %.2f]",
@@ -51,7 +51,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void benchmarkJacksonSerialization() throws Exception {
+    public void b003_benchmarkJacksonSerialization() throws Exception {
         final StandardObjectMapper objectMapper = new StandardObjectMapper();
 
         RUNNER.run(new BasicBenchmark("Jackson Serialization Benchmark", OBJECT_COUNT_PER_BATCH) {
@@ -65,7 +65,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void benchmarkJacksonDeserialization() throws Exception {
+    public void b004_benchmarkJacksonDeserialization() throws Exception {
         final StandardObjectMapper objectMapper = new StandardObjectMapper();
 
         final String[] jsonObjects = new String[OBJECT_COUNT_PER_BATCH];
@@ -84,14 +84,14 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void testGoogleProtobufSerializationWorks() throws Exception {
+    public void b005_testGoogleProtobufSerializationWorks() throws Exception {
         TestObject original = TestObjectFactory.newTestObject();
         TestObject recomposed = TestObjectProtoTranslator.translateFromProto(TestObjectProto.parseFrom(TestObjectProtoTranslator.translateToProto(original).toByteArray()));
         assertEquals("Google Protobuf Serialization and Deserialization is broken.", original, recomposed);
     }
 
     @Test
-    public void benchmarkGoogleProtobufDataSizes() throws Exception {
+    public void b006_benchmarkGoogleProtobufDataSizes() throws Exception {
         byte[] bytes = TestObjectProtoTranslator.translateToProto(TestObjectFactory.newTestObject()).toByteArray();
         byte[] compressedBytes = gzipCompress(bytes);
         System.out.println(String.format("Google Protobuf Data Sizes: [ uncompressed bytes = %d, gzip compressed bytes = %d, compression ratio = %.2f]",
@@ -99,7 +99,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void benchmarkGoogleProtobufSerialization() throws Exception {
+    public void b007_benchmarkGoogleProtobufSerialization() throws Exception {
         RUNNER.run(new BasicBenchmark("Google Protobuf Serialization Benchmark", OBJECT_COUNT_PER_BATCH) {
             @Override
             public void run() throws Exception {
@@ -111,7 +111,7 @@ public class DataConversionBenchmarkTest {
     }
 
     @Test
-    public void benchmarkGoogleProtobufDeserialization() throws Exception {
+    public void b008_benchmarkGoogleProtobufDeserialization() throws Exception {
         final byte[][] byteArrayObjects = new byte[OBJECT_COUNT_PER_BATCH][];
         for (int i = 0; i < OBJECT_COUNT_PER_BATCH; i++) {
             byteArrayObjects[i] = TestObjectProtoTranslator.translateToProto(BENCHMARK_OBJECTS[i]).toByteArray();
