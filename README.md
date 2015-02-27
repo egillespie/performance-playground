@@ -37,17 +37,17 @@ The latest benchmarks were collected on February 27, 2015 using Java 1.8.0_20 an
 
 | Framework | Average Time (ms) | Min. Time (ms) | Max. Time (ms) | Variance |
 | :-------- | ----------------: | -------------: | -------------: | :------- |
-| Jackson JSON 2.5.1 | 897 | 815 | 1,264 | -0.09% / +0.41% |
-| Jackson Afterburner JSON 2.5.1 | 886 | 835 | 1,288 | -0.06% / +0.45% |
-| Protocol Buffers 2.6.0 | 867 | 775 | 1,240 | -0.11% / +0.43% |
+| Jackson JSON 2.5.1 | 348 | 317 | 502 | -0.09% / +0.44% |
+| Jackson Afterburner JSON 2.5.1 | 327 | 290 | 432 | -0.11% / +0.32% |
+| Protocol Buffers 2.6.0 | 712 | 656 | 1,134 | -0.08% / +0.59% |
 
 ### Deserialization
 
 | Framework | Average Time (ms) | Min. Time (ms) | Max. Time (ms) | Variance |
 | :-------- | ----------------: | -------------: | -------------: | :------- |
-| Jackson JSON 2.5.1 | 1,726 | 1,540 | 2,571 | -0.11% / +0.49% |
-| Jackson Afterburner JSON 2.5.1 | 1,730 | 1,504 | 2,517 | -0.13% / +0.45% |
-| Protocol Buffers 2.6.0 | 1,576 | 1,375 | 2,175 | -0.13% / +0.38% |
+| Jackson JSON 2.5.1 | 580 | 522 | 1,150 | -0.10% / +0.98% |
+| Jackson Afterburner JSON 2.5.1 | 566 | 506 | 906 | -0.11% / +0.60% |
+| Protocol Buffers 2.6.0 | 1,342 | 1,239 | 2,198 | -0.08% / +0.64% |
 
 ### Compression
 
@@ -57,6 +57,6 @@ smaller data sets either before or after compression.
 
 | Framework | Uncompressed Size (bytes) | GZip Compressed Size (bytes) | Compression Ratio |
 | :-------- | ------------------------: | ---------------------------: | ----------------: |
-| Jackson JSON 2.5.1 | 28,054 | 9,717 | 2.89 |
-| Jackson Afterburner JSON 2.5.1 | 28,085 | 9,735 | 2.88 |
-| Protocol Buffers 2.6.0 | 18,865 | 9,230 | 2.04 |
+| Jackson JSON 2.5.1 | 27,023 | 9,642 | 2.80 |
+| Jackson Afterburner JSON 2.5.1 | 26,977 | 9,616 | 2.81 |
+| Protocol Buffers 2.6.0 | 18,788 | 9,217 | 2.04 |
