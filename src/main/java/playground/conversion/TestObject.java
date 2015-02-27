@@ -1,7 +1,5 @@
 package playground.conversion;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
@@ -16,26 +14,27 @@ import java.util.Arrays;
  * @author egillespie
  */
 public class TestObject {
-    private final boolean myBoolean;
-    private final int myInt;
-    private final double myDouble;
-    private final long myLong;
-    private final String myString;
-    private final String[] myStringArray;
-    private final LocalDate myLocalDate;
-    private final NestedObject myNestedObject;
-    private final ImmutableSet<NestedObject> myNestedObjectSet;
+    private boolean myBoolean;
+    private int myInt;
+    private double myDouble;
+    private long myLong;
+    private String myString;
+    private String[] myStringArray;
+    private LocalDate myLocalDate;
+    private NestedObject myNestedObject;
+    private ImmutableSet<NestedObject> myNestedObjectSet;
 
-    @JsonCreator
-    public TestObject(@JsonProperty("myBoolean") boolean myBoolean,
-                      @JsonProperty("myInt") int myInt,
-                      @JsonProperty("myDouble") double myDouble,
-                      @JsonProperty("myLong") long myLong,
-                      @JsonProperty("myString") String myString,
-                      @JsonProperty("myStringArray") String[] myStringArray,
-                      @JsonProperty("myLocalDate") LocalDate myLocalDate,
-                      @JsonProperty("myNestedObject") NestedObject myNestedObject,
-                      @JsonProperty("myNestedObjectSet") ImmutableSet<NestedObject> myNestedObjectSet) {
+    public TestObject() { }
+
+    public TestObject(boolean myBoolean,
+                      int myInt,
+                      double myDouble,
+                      long myLong,
+                      String myString,
+                      String[] myStringArray,
+                      LocalDate myLocalDate,
+                      NestedObject myNestedObject,
+                      ImmutableSet<NestedObject> myNestedObjectSet) {
         this.myBoolean = myBoolean;
         this.myInt = myInt;
         this.myDouble = myDouble;
@@ -51,36 +50,72 @@ public class TestObject {
         return myBoolean;
     }
 
+    public void setMyBoolean(boolean myBoolean) {
+        this.myBoolean = myBoolean;
+    }
+
     public int getMyInt() {
         return myInt;
+    }
+
+    public void setMyInt(int myInt) {
+        this.myInt = myInt;
     }
 
     public double getMyDouble() {
         return myDouble;
     }
 
+    public void setMyDouble(double myDouble) {
+        this.myDouble = myDouble;
+    }
+
     public long getMyLong() {
         return myLong;
+    }
+
+    public void setMyLong(long myLong) {
+        this.myLong = myLong;
     }
 
     public String getMyString() {
         return myString;
     }
 
+    public void setMyString(String myString) {
+        this.myString = myString;
+    }
+
     public String[] getMyStringArray() {
         return myStringArray;
+    }
+
+    public void setMyStringArray(String[] myStringArray) {
+        this.myStringArray = myStringArray;
     }
 
     public LocalDate getMyLocalDate() {
         return myLocalDate;
     }
 
+    public void setMyLocalDate(LocalDate myLocalDate) {
+        this.myLocalDate = myLocalDate;
+    }
+
     public NestedObject getMyNestedObject() {
         return myNestedObject;
     }
 
+    public void setMyNestedObject(NestedObject myNestedObject) {
+        this.myNestedObject = myNestedObject;
+    }
+
     public ImmutableSet<NestedObject> getMyNestedObjectSet() {
         return myNestedObjectSet;
+    }
+
+    public void setMyNestedObjectSet(ImmutableSet<NestedObject> myNestedObjectSet) {
+        this.myNestedObjectSet = myNestedObjectSet;
     }
 
     @Override
@@ -138,28 +173,29 @@ public class TestObject {
     }
 
     public static class NestedObject {
-        private final LocalDate date0;
-        private final LocalDate date1;
-        private final LocalDate date2;
-        private final LocalDate date3;
-        private final LocalDate date4;
-        private final LocalDate date5;
-        private final LocalDate date6;
-        private final LocalDate date7;
-        private final LocalDate date8;
-        private final LocalDate date9;
+        private LocalDate date0;
+        private LocalDate date1;
+        private LocalDate date2;
+        private LocalDate date3;
+        private LocalDate date4;
+        private LocalDate date5;
+        private LocalDate date6;
+        private LocalDate date7;
+        private LocalDate date8;
+        private LocalDate date9;
 
-        @JsonCreator
-        public NestedObject(@JsonProperty("date0") LocalDate date0,
-                            @JsonProperty("date1") LocalDate date1,
-                            @JsonProperty("date2") LocalDate date2,
-                            @JsonProperty("date3") LocalDate date3,
-                            @JsonProperty("date4") LocalDate date4,
-                            @JsonProperty("date5") LocalDate date5,
-                            @JsonProperty("date6") LocalDate date6,
-                            @JsonProperty("date7") LocalDate date7,
-                            @JsonProperty("date8") LocalDate date8,
-                            @JsonProperty("date9") LocalDate date9) {
+        public NestedObject() { }
+
+        public NestedObject(LocalDate date0,
+                            LocalDate date1,
+                            LocalDate date2,
+                            LocalDate date3,
+                            LocalDate date4,
+                            LocalDate date5,
+                            LocalDate date6,
+                            LocalDate date7,
+                            LocalDate date8,
+                            LocalDate date9) {
             this.date0 = date0;
             this.date1 = date1;
             this.date2 = date2;
@@ -176,40 +212,80 @@ public class TestObject {
             return date0;
         }
 
+        public void setDate0(LocalDate date0) {
+            this.date0 = date0;
+        }
+
         public LocalDate getDate1() {
             return date1;
+        }
+
+        public void setDate1(LocalDate date1) {
+            this.date1 = date1;
         }
 
         public LocalDate getDate2() {
             return date2;
         }
 
+        public void setDate2(LocalDate date2) {
+            this.date2 = date2;
+        }
+
         public LocalDate getDate3() {
             return date3;
+        }
+
+        public void setDate3(LocalDate date3) {
+            this.date3 = date3;
         }
 
         public LocalDate getDate4() {
             return date4;
         }
 
+        public void setDate4(LocalDate date4) {
+            this.date4 = date4;
+        }
+
         public LocalDate getDate5() {
             return date5;
+        }
+
+        public void setDate5(LocalDate date5) {
+            this.date5 = date5;
         }
 
         public LocalDate getDate6() {
             return date6;
         }
 
+        public void setDate6(LocalDate date6) {
+            this.date6 = date6;
+        }
+
         public LocalDate getDate7() {
             return date7;
+        }
+
+        public void setDate7(LocalDate date7) {
+            this.date7 = date7;
         }
 
         public LocalDate getDate8() {
             return date8;
         }
 
+        public void setDate8(LocalDate date8) {
+            this.date8 = date8;
+        }
+
         public LocalDate getDate9() {
             return date9;
+        }
+
+        public void setDate9(LocalDate date9) {
+            this.date9 = date9;
         }
 
         @Override
