@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>performance-playground</name>
-    <description>Performance Test for All the Things!</description>
+    <description>Compares relative performance of various serialization and deserialization tools</description>
     <url>https://github.com/egillespie/performance-playground</url>
 
     <scm>
@@ -72,6 +72,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 

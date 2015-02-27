@@ -2,6 +2,7 @@ package playground;
 
 import com.google.common.base.Stopwatch;
 
+import java.text.DecimalFormat;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,6 +11,8 @@ import java.util.concurrent.TimeUnit;
  * @author egillespie
  */
 public class BenchmarkRunner {
+    private static final DecimalFormat FORMATTER = new DecimalFormat("#,###");
+
     private final int totalBatches;
 
     public BenchmarkRunner(int totalBatches) {
@@ -34,9 +37,17 @@ public class BenchmarkRunner {
         }
 
         long average = total / totalBatches;
-        System.out.println(String.format("%s: [ total benchmarks = %d, benchmark size = %d, average ms = %d, min ms = %d (%.2f%%), max ms = %d (%.2f%%) ]",
-                benchmark.describe(), totalBatches, benchmark.size(), average,
-                min, ((double) average - (double) min) / (double) average,
-                max, ((double) max - (double) average) / (double) average));
+        printBenchmarkResult(benchmark, min, max, average);
+    }
+
+    private void printBenchmarkResult(Benchmark benchmark, long min, long max, long average) {
+        // | Jackson JSON 2.5.1 | 1,559 | 1,358 | 2,330 | -0.13% / +0.49% |
+        System.out.println(String.format("| %s | %s | %s | %s | -%.2f%% / +%.2f%% |",
+                benchmark.describe(),
+                FORMATTER.format(average),
+                FORMATTER.format(min),
+                FORMATTER.format(max),
+                ((double) average - (double) min) / (double) average,
+                ((double) max - (double) average) / (double) average));
     }
 }
