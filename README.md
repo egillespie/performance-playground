@@ -3,11 +3,12 @@ performance-playground
 
 ## Goal
 
-This project is a simple way to compare relative performance of various serialization and deserialization tools.
+Compare relative performance of various serialization and deserialization tools.
 
-Here's the list of benchmarked tools:
+Here is the list of benchmarked tools:
 
 1. FasterXML's [Jackson JSON](http://wiki.fasterxml.com/JacksonHome) v2.5.1
+1. FasterXML's Jackson JSON with [Afterburner](https://github.com/FasterXML/jackson-module-afterburner) v2.5.1
 2. Google's [Protocol Buffers](https://developers.google.com/protocol-buffers/) v2.6.0
 
 ## Notes
