@@ -27,28 +27,28 @@ was performed 100 times in order to calculate average, minimum, and maximum
 times as well as variance around the average to gauge how consistent the
 serialization and deserialization processes are for the various frameworks.
 
-The latest benchmarks were collected on February 27, 2015 using Java 1.8.0_20 and the following platform:
+The latest benchmarks were collected on June 25, 2015 using Java 1.8.0_40 and the following platform:
 
-* CPU: Intel Core i7 Q 720 (8 cores) @ 1.60 GHz
-* RAM: 6,144 MB
-* Disk: WD 5400 RPM
-* OS: Windows 7 Home Premium 64-bit (6.1, build 7601)
+* CPU: 2.8 GHz Intel Core i7, 4 cores
+* RAM: 16 GB 1600 MHz DDR3
+* Disk: Apple SSD
+* OS: Mac OS X Yosemite 10.10.3 on MacBook Pro (Retina, 15-inch, Mid 2014)
 
 ### Serialization
 
 | Framework | Average Time (ms) | Min. Time (ms) | Max. Time (ms) | Variance |
 | :-------- | ----------------: | -------------: | -------------: | :------- |
-| Jackson JSON 2.5.1 | 373 | 321 | 601 | -0.14% / +0.61% |
-| Jackson Afterburner JSON 2.5.1 | 357 | 313 | 587 | -0.12% / +0.64% |
-| Protocol Buffers 2.6.0 | 891 | 772 | 1,402 | -0.13% / +0.57% |
+| Jackson JSON 2.6.0-rc2 | 176 | 155 | 244 | -0.12% / +0.39% |
+| Jackson Afterburner JSON 2.6.0-rc2 | 158 | 141 | 237 | -0.11% / +0.50% |
+| Protocol Buffers 3.0.0-alpha-3 | 428 | 402 | 553 | -0.06% / +0.29% |
 
 ### Deserialization
 
 | Framework | Average Time (ms) | Min. Time (ms) | Max. Time (ms) | Variance |
 | :-------- | ----------------: | -------------: | -------------: | :------- |
-| Jackson JSON 2.5.1 | 704 | 557 | 1,421 | -0.21% / +1.02% |
-| Jackson Afterburner JSON 2.5.1 | 569 | 523 | 973 | -0.08% / +0.71% |
-| Protocol Buffers 2.6.0 | 1,344 | 1,173 | 2,006 | -0.13% / +0.49% |
+| Jackson JSON 2.6.0-rc2 | 318 | 303 | 392 | -0.05% / +0.23% |
+| Jackson Afterburner JSON 2.6.0-rc2 | 313 | 297 | 494 | -0.05% / +0.58% |
+| Protocol Buffers 3.0.0-alpha-3 | 673 | 650 | 734 | -0.03% / +0.09% |
 
 ### Compression
 
@@ -58,6 +58,6 @@ smaller data sets either before or after compression.
 
 | Framework | Uncompressed Size (bytes) | GZip Compressed Size (bytes) | Compression Ratio |
 | :-------- | ------------------------: | ---------------------------: | ----------------: |
-| Jackson JSON 2.5.1 | 27,018 | 9,591 | 2.82 |
-| Jackson Afterburner JSON 2.5.1 | 26,910 | 9,610 | 2.80 |
-| Protocol Buffers 2.6.0 | 18,851 | 9,199 | 2.05 |
+| Jackson JSON 2.6.0-rc2 | 27,028 | 9,626 | 2.81 |
+| Jackson Afterburner JSON 2.6.0-rc2 | 27,031 | 9,611 | 2.81 |
+| Protocol Buffers 3.0.0-alpha-3 | 18,812 | 9,229 | 2.04 |

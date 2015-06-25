@@ -24,9 +24,9 @@ import static playground.conversion.TestObjectProtos.TestObjectProto;
 @RunWith(JUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DataConversionBenchmarkTest {
-    private static final String JACKSON_TOOL = "Jackson JSON 2.5.1";
-    private static final String AFTERBURNER_TOOL = "Jackson Afterburner JSON 2.5.1";
-    private static final String PROTOBUF_TOOL = "Protocol Buffers 2.6.0";
+    private static final String JACKSON_TOOL = "Jackson JSON 2.6.0-rc2";
+    private static final String AFTERBURNER_TOOL = "Jackson Afterburner JSON 2.6.0-rc2";
+    private static final String PROTOBUF_TOOL = "Protocol Buffers 3.0.0-alpha-3";
 
     private static final DecimalFormat FORMATTER = new DecimalFormat("#,###");
 
