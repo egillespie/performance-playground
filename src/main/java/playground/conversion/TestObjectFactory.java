@@ -1,7 +1,7 @@
 package playground.conversion;
 
 import com.google.common.collect.ImmutableSet;
-import org.joda.time.LocalDate;
+import org.joda.time.Instant;
 
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public final class TestObjectFactory {
                 RANDOM.nextLong(),
                 nextRandomString(),
                 nextRandomStringArray(),
-                nextRandomLocalDate(),
+                nextRandomInstant(),
                 newNestedObject(),
                 nextRandomNestedObjectSet());
 
@@ -33,16 +33,16 @@ public final class TestObjectFactory {
 
     private static NestedObject newNestedObject() {
         return new NestedObject(
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate(),
-                nextRandomLocalDate());
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant(),
+                nextRandomInstant());
     }
 
     private static String nextRandomString() {
@@ -57,8 +57,8 @@ public final class TestObjectFactory {
         return stringArray;
     }
 
-    private static LocalDate nextRandomLocalDate() {
-        return new LocalDate(RANDOM.nextLong());
+    private static Instant nextRandomInstant() {
+        return new Instant(RANDOM.nextLong());
     }
 
     private static ImmutableSet<NestedObject> nextRandomNestedObjectSet() {

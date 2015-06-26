@@ -3,7 +3,7 @@ package playground.conversion;
 import com.google.common.base.Joiner;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
-import org.joda.time.LocalDate;
+import org.joda.time.Instant;
 
 import java.util.Arrays;
 
@@ -20,7 +20,7 @@ public class TestObject {
     private long myLong;
     private String myString;
     private String[] myStringArray;
-    private LocalDate myLocalDate;
+    private Instant myInstant;
     private NestedObject myNestedObject;
     private ImmutableSet<NestedObject> myNestedObjectSet;
 
@@ -32,7 +32,7 @@ public class TestObject {
                       long myLong,
                       String myString,
                       String[] myStringArray,
-                      LocalDate myLocalDate,
+                      Instant myInstant,
                       NestedObject myNestedObject,
                       ImmutableSet<NestedObject> myNestedObjectSet) {
         this.myBoolean = myBoolean;
@@ -41,7 +41,7 @@ public class TestObject {
         this.myLong = myLong;
         this.myString = myString;
         this.myStringArray = myStringArray;
-        this.myLocalDate = myLocalDate;
+        this.myInstant = myInstant;
         this.myNestedObject = myNestedObject;
         this.myNestedObjectSet = myNestedObjectSet;
     }
@@ -94,12 +94,12 @@ public class TestObject {
         this.myStringArray = myStringArray;
     }
 
-    public LocalDate getMyLocalDate() {
-        return myLocalDate;
+    public Instant getMyInstant() {
+        return myInstant;
     }
 
-    public void setMyLocalDate(LocalDate myLocalDate) {
-        this.myLocalDate = myLocalDate;
+    public void setMyInstant(Instant myInstant) {
+        this.myInstant = myInstant;
     }
 
     public NestedObject getMyNestedObject() {
@@ -129,7 +129,7 @@ public class TestObject {
         if (Double.compare(that.myDouble, myDouble) != 0) return false;
         if (myInt != that.myInt) return false;
         if (myLong != that.myLong) return false;
-        if (myLocalDate != null ? !myLocalDate.equals(that.myLocalDate) : that.myLocalDate != null) return false;
+        if (myInstant != null ? !myInstant.equals(that.myInstant) : that.myInstant != null) return false;
         if (myNestedObject != null ? !myNestedObject.equals(that.myNestedObject) : that.myNestedObject != null)
             return false;
         if (myNestedObjectSet != null ? !myNestedObjectSet.equals(that.myNestedObjectSet) : that.myNestedObjectSet != null)
@@ -151,7 +151,7 @@ public class TestObject {
         result = 31 * result + (int) (myLong ^ (myLong >>> 32));
         result = 31 * result + (myString != null ? myString.hashCode() : 0);
         result = 31 * result + (myStringArray != null ? Arrays.hashCode(myStringArray) : 0);
-        result = 31 * result + (myLocalDate != null ? myLocalDate.hashCode() : 0);
+        result = 31 * result + (myInstant != null ? myInstant.hashCode() : 0);
         result = 31 * result + (myNestedObject != null ? myNestedObject.hashCode() : 0);
         result = 31 * result + (myNestedObjectSet != null ? myNestedObjectSet.hashCode() : 0);
         return result;
@@ -166,126 +166,126 @@ public class TestObject {
                 .add("myLong", myLong)
                 .add("myString", myString)
                 .add("myStringArray", String.format("[%s]", Joiner.on(',').join(myStringArray)))
-                .add("myLocalDate", myLocalDate)
+                .add("myInstant", myInstant.getMillis())
                 .add("myNestedObject", myNestedObject)
                 .add("myNestedObjectSet", myNestedObjectSet)
                 .toString();
     }
 
     public static class NestedObject {
-        private LocalDate date0;
-        private LocalDate date1;
-        private LocalDate date2;
-        private LocalDate date3;
-        private LocalDate date4;
-        private LocalDate date5;
-        private LocalDate date6;
-        private LocalDate date7;
-        private LocalDate date8;
-        private LocalDate date9;
+        private Instant instant0;
+        private Instant instant1;
+        private Instant instant2;
+        private Instant instant3;
+        private Instant instant4;
+        private Instant instant5;
+        private Instant instant6;
+        private Instant instant7;
+        private Instant instant8;
+        private Instant instant9;
 
         public NestedObject() { }
 
-        public NestedObject(LocalDate date0,
-                            LocalDate date1,
-                            LocalDate date2,
-                            LocalDate date3,
-                            LocalDate date4,
-                            LocalDate date5,
-                            LocalDate date6,
-                            LocalDate date7,
-                            LocalDate date8,
-                            LocalDate date9) {
-            this.date0 = date0;
-            this.date1 = date1;
-            this.date2 = date2;
-            this.date3 = date3;
-            this.date4 = date4;
-            this.date5 = date5;
-            this.date6 = date6;
-            this.date7 = date7;
-            this.date8 = date8;
-            this.date9 = date9;
+        public NestedObject(Instant instant0,
+                            Instant instant1,
+                            Instant instant2,
+                            Instant instant3,
+                            Instant instant4,
+                            Instant instant5,
+                            Instant instant6,
+                            Instant instant7,
+                            Instant instant8,
+                            Instant instant9) {
+            this.instant0 = instant0;
+            this.instant1 = instant1;
+            this.instant2 = instant2;
+            this.instant3 = instant3;
+            this.instant4 = instant4;
+            this.instant5 = instant5;
+            this.instant6 = instant6;
+            this.instant7 = instant7;
+            this.instant8 = instant8;
+            this.instant9 = instant9;
         }
 
-        public LocalDate getDate0() {
-            return date0;
+        public Instant getInstant0() {
+            return instant0;
         }
 
-        public void setDate0(LocalDate date0) {
-            this.date0 = date0;
+        public void setInstant0(Instant instant0) {
+            this.instant0 = instant0;
         }
 
-        public LocalDate getDate1() {
-            return date1;
+        public Instant getInstant1() {
+            return instant1;
         }
 
-        public void setDate1(LocalDate date1) {
-            this.date1 = date1;
+        public void setInstant1(Instant instant1) {
+            this.instant1 = instant1;
         }
 
-        public LocalDate getDate2() {
-            return date2;
+        public Instant getInstant2() {
+            return instant2;
         }
 
-        public void setDate2(LocalDate date2) {
-            this.date2 = date2;
+        public void setInstant2(Instant instant2) {
+            this.instant2 = instant2;
         }
 
-        public LocalDate getDate3() {
-            return date3;
+        public Instant getInstant3() {
+            return instant3;
         }
 
-        public void setDate3(LocalDate date3) {
-            this.date3 = date3;
+        public void setInstant3(Instant instant3) {
+            this.instant3 = instant3;
         }
 
-        public LocalDate getDate4() {
-            return date4;
+        public Instant getInstant4() {
+            return instant4;
         }
 
-        public void setDate4(LocalDate date4) {
-            this.date4 = date4;
+        public void setInstant4(Instant instant4) {
+            this.instant4 = instant4;
         }
 
-        public LocalDate getDate5() {
-            return date5;
+        public Instant getInstant5() {
+            return instant5;
         }
 
-        public void setDate5(LocalDate date5) {
-            this.date5 = date5;
+        public void setInstant5(Instant instant5) {
+            this.instant5 = instant5;
         }
 
-        public LocalDate getDate6() {
-            return date6;
+        public Instant getInstant6() {
+            return instant6;
         }
 
-        public void setDate6(LocalDate date6) {
-            this.date6 = date6;
+        public void setInstant6(Instant instant6) {
+            this.instant6 = instant6;
         }
 
-        public LocalDate getDate7() {
-            return date7;
+        public Instant getInstant7() {
+            return instant7;
         }
 
-        public void setDate7(LocalDate date7) {
-            this.date7 = date7;
+        public void setInstant7(Instant instant7) {
+            this.instant7 = instant7;
         }
 
-        public LocalDate getDate8() {
-            return date8;
+        public Instant getInstant8() {
+            return instant8;
         }
 
-        public void setDate8(LocalDate date8) {
-            this.date8 = date8;
+        public void setInstant8(Instant instant8) {
+            this.instant8 = instant8;
         }
 
-        public LocalDate getDate9() {
-            return date9;
+        public Instant getInstant9() {
+            return instant9;
         }
 
-        public void setDate9(LocalDate date9) {
-            this.date9 = date9;
+        public void setInstant9(Instant instant9) {
+            this.instant9 = instant9;
         }
 
         @Override
@@ -295,48 +295,48 @@ public class TestObject {
 
             NestedObject that = (NestedObject) o;
 
-            if (date0 != null ? !date0.equals(that.date0) : that.date0 != null) return false;
-            if (date1 != null ? !date1.equals(that.date1) : that.date1 != null) return false;
-            if (date2 != null ? !date2.equals(that.date2) : that.date2 != null) return false;
-            if (date3 != null ? !date3.equals(that.date3) : that.date3 != null) return false;
-            if (date4 != null ? !date4.equals(that.date4) : that.date4 != null) return false;
-            if (date5 != null ? !date5.equals(that.date5) : that.date5 != null) return false;
-            if (date6 != null ? !date6.equals(that.date6) : that.date6 != null) return false;
-            if (date7 != null ? !date7.equals(that.date7) : that.date7 != null) return false;
-            if (date8 != null ? !date8.equals(that.date8) : that.date8 != null) return false;
-            if (date9 != null ? !date9.equals(that.date9) : that.date9 != null) return false;
+            if (instant0 != null ? !instant0.equals(that.instant0) : that.instant0 != null) return false;
+            if (instant1 != null ? !instant1.equals(that.instant1) : that.instant1 != null) return false;
+            if (instant2 != null ? !instant2.equals(that.instant2) : that.instant2 != null) return false;
+            if (instant3 != null ? !instant3.equals(that.instant3) : that.instant3 != null) return false;
+            if (instant4 != null ? !instant4.equals(that.instant4) : that.instant4 != null) return false;
+            if (instant5 != null ? !instant5.equals(that.instant5) : that.instant5 != null) return false;
+            if (instant6 != null ? !instant6.equals(that.instant6) : that.instant6 != null) return false;
+            if (instant7 != null ? !instant7.equals(that.instant7) : that.instant7 != null) return false;
+            if (instant8 != null ? !instant8.equals(that.instant8) : that.instant8 != null) return false;
+            if (instant9 != null ? !instant9.equals(that.instant9) : that.instant9 != null) return false;
 
             return true;
         }
 
         @Override
         public int hashCode() {
-            int result = date0 != null ? date0.hashCode() : 0;
-            result = 31 * result + (date1 != null ? date1.hashCode() : 0);
-            result = 31 * result + (date2 != null ? date2.hashCode() : 0);
-            result = 31 * result + (date3 != null ? date3.hashCode() : 0);
-            result = 31 * result + (date4 != null ? date4.hashCode() : 0);
-            result = 31 * result + (date5 != null ? date5.hashCode() : 0);
-            result = 31 * result + (date6 != null ? date6.hashCode() : 0);
-            result = 31 * result + (date7 != null ? date7.hashCode() : 0);
-            result = 31 * result + (date8 != null ? date8.hashCode() : 0);
-            result = 31 * result + (date9 != null ? date9.hashCode() : 0);
+            int result = instant0 != null ? instant0.hashCode() : 0;
+            result = 31 * result + (instant1 != null ? instant1.hashCode() : 0);
+            result = 31 * result + (instant2 != null ? instant2.hashCode() : 0);
+            result = 31 * result + (instant3 != null ? instant3.hashCode() : 0);
+            result = 31 * result + (instant4 != null ? instant4.hashCode() : 0);
+            result = 31 * result + (instant5 != null ? instant5.hashCode() : 0);
+            result = 31 * result + (instant6 != null ? instant6.hashCode() : 0);
+            result = 31 * result + (instant7 != null ? instant7.hashCode() : 0);
+            result = 31 * result + (instant8 != null ? instant8.hashCode() : 0);
+            result = 31 * result + (instant9 != null ? instant9.hashCode() : 0);
             return result;
         }
 
         @Override
         public String toString() {
             return Objects.toStringHelper(this)
-                    .add("date0", date0)
-                    .add("date1", date1)
-                    .add("date2", date2)
-                    .add("date3", date3)
-                    .add("date4", date4)
-                    .add("date5", date5)
-                    .add("date6", date6)
-                    .add("date7", date7)
-                    .add("date8", date8)
-                    .add("date9", date9)
+                    .add("instant0", instant0.getMillis())
+                    .add("instant1", instant1.getMillis())
+                    .add("instant2", instant2.getMillis())
+                    .add("instant3", instant3.getMillis())
+                    .add("instant4", instant4.getMillis())
+                    .add("instant5", instant5.getMillis())
+                    .add("instant6", instant6.getMillis())
+                    .add("instant7", instant7.getMillis())
+                    .add("instant8", instant8.getMillis())
+                    .add("instant9", instant9.getMillis())
                     .toString();
         }
     }
